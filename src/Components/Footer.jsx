@@ -1,41 +1,29 @@
-import pic8 from "./Pictures/pic8.svg"
-import pic9 from "./Pictures/pic9.svg"
+const socials = [
+  { label: "GitHub", href: "https://github.com/YOUR_GITHUB" },
+  { label: "LinkedIn", href: "https://linkedin.com/in/YOUR_LINKEDIN" },
+  { label: "Twitter", href: "https://twitter.com/YOUR_TWITTER" },
+  { label: "Email", href: "mailto:YOUR_EMAIL" },
+];
 
-function Footer(){
-    return(
-        <footer className="mainfooter">
-            <div className="footertop">
-
-                <div className="footerbrand">
-                    <span className="footerlogo">Safarkhah</span>
-                    <p className="footertagline">
-                        I build interactive web applications and practical
-                        solutions using modern technologies.
-                    </p>
-                </div>
-
-                <div className="footercolumn">
-                    <span className="footercolumntitle">Connect</span>
-                    <div className="footericons">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <img className="footericon" src={pic8} alt="GitHub" />
-                        </a>
-                        <a href="ilyasafarkhah@gmail.com">
-                            <img className="footericon gmail" src={pic9} alt="Gmail" />
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div className="footerbottom">
-                <p className="footercopyright">
-                    © {new Date().getFullYear()} Safarkhah
-                </p>
-                <p className="footermadewith">Built with React</p>
-            </div>
-        </footer>
-    )
+export default function Footer() {
+  return (
+    <footer className="border-t border-white/10 px-6 py-14 text-center">
+      <h3 className="font-display text-xl font-bold tracking-[0.2em]">YOUR NAME</h3>
+      <p className="mt-2 text-slate-400">Building digital experiences.</p>
+      <ul className="mt-6 flex flex-wrap justify-center gap-3">
+        {socials.map(({ label, href }) => (
+          <li key={label}>
+            <a
+              href={href}
+              className="btn btn-ghost btn-sm"
+              {...(href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p className="mt-8 text-sm text-slate-500">© 2026 YOUR NAME. All rights reserved.</p>
+    </footer>
+  );
 }
-
-export default Footer
