@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "../CSS/Header.css";
 import { AnimatePresence, motion } from "motion/react";
+import "../CSS/Header.css";
 
 const links = [
   { id: "home", label: "Home" },
@@ -22,13 +22,18 @@ export default function Header() {
 
   useEffect(() => {
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      (entries) =>
+        entries.forEach(
+          (e) => e.isIntersecting && setActive(e.target.id)
+        ),
       { rootMargin: "-45% 0px -50% 0px" }
     );
+
     links.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) io.observe(el);
     });
+
     return () => io.disconnect();
   }, []);
 
@@ -44,14 +49,18 @@ export default function Header() {
         className={`glass site-nav ${scrolled ? "is-scrolled" : ""}`}
       >
         <div className="site-nav-row">
-          <a href="#home" className="site-brand">YOUR NAME</a>
+          <a href="#home" className="site-brand">
+            YOUR NAME
+          </a>
 
           <ul className="desktop-nav">
             {links.map(({ id, label }) => (
               <li key={id}>
                 <a
                   href={`#${id}`}
-                  aria-current={active === id ? "page" : undefined}
+                  aria-current={
+                    active === id ? "page" : undefined
+                  }
                   className="nav-link"
                 >
                   {active === id && (
@@ -89,7 +98,11 @@ export default function Header() {
             >
               {links.map(({ id, label }) => (
                 <li key={id}>
-                  <a href={`#${id}`} onClick={() => setOpen(false)} className="mobile-nav-link">
+                  <a
+                    href={`#${id}`}
+                    onClick={() => setOpen(false)}
+                    className="mobile-nav-link"
+                  >
                     {label}
                   </a>
                 </li>
