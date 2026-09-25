@@ -6,7 +6,6 @@ export default function PreviewModal({ project, onClose }) {
   const [loaded, setLoaded] = useState(false);
   const [slow, setSlow] = useState(false);
 
-  // If the iframe hasn't loaded after 8s, the site may block embedding — offer the fallback.
   useEffect(() => {
     const t = setTimeout(() => setSlow(true), 8000);
     return () => clearTimeout(t);
@@ -15,8 +14,10 @@ export default function PreviewModal({ project, onClose }) {
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && onClose();
     const prevOverflow = document.body.style.overflow;
+
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
@@ -44,11 +45,27 @@ export default function PreviewModal({ project, onClose }) {
       >
         <div className="preview-header">
           <p className="preview-title">{project.title}</p>
+
           <div className="preview-header-actions">
-            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">
-              Open Live Project <span className="arrow" aria-hidden="true">↗</span>
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost btn-sm"
+            >
+              Open Live Project{" "}
+              <span className="arrow" aria-hidden="true">
+                ↗
+              </span>
             </a>
-            <button type="button" onClick={onClose} aria-label="Close preview" autoFocus className="btn btn-ghost btn-sm">
+
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Close preview"
+              autoFocus
+              className="btn btn-ghost btn-sm"
+            >
               ✕
             </button>
           </div>
@@ -59,15 +76,30 @@ export default function PreviewModal({ project, onClose }) {
             <div role="status" className="preview-loading">
               <div>
                 <div className="spinner" />
-                <p>{slow ? "This is taking a while — the site may block embedding." : "Loading preview…"}</p>
+
+                <p className="preview-loading-copy">
+                  {slow
+                    ? "This is taking a while — the site may block embedding."
+                    : "Loading preview…"}
+                </p>
+
                 {slow && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary preview-loading-action">
-                    Open Live Project <span className="arrow" aria-hidden="true">↗</span>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary preview-loading-action"
+                  >
+                    Open Live Project{" "}
+                    <span className="arrow" aria-hidden="true">
+                      ↗
+                    </span>
                   </a>
                 )}
               </div>
             </div>
           )}
+
           <iframe
             title={`${project.title} live preview`}
             src={project.liveUrl}
