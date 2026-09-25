@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import "../CSS/ProjectCard.css";
 
 export default function ProjectCard({ project, index, onPreview }) {
   const { title, description, technologies, image, liveUrl, githubUrl } = project;
@@ -11,28 +12,28 @@ export default function ProjectCard({ project, index, onPreview }) {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.7, delay: (index % 2) * 0.12, ease: "easeOut" }}
     >
-      <article className="card glass flex h-full flex-col overflow-hidden rounded-3xl">
-        <div className="relative aspect-[16/10] overflow-hidden">
-          <img src={image} alt={`${title} preview`} loading="lazy" className="card-img h-full w-full object-cover" />
-          <div className="card-fade absolute inset-0" aria-hidden="true" />
+      <article className="glass project-card">
+        <div className="project-image-wrap">
+          <img src={image} alt={`${title} preview`} loading="lazy" className="card-img" />
+          <div className="card-fade" aria-hidden="true" />
           {liveUrl && (
-            <button type="button" onClick={() => onPreview(project)} className="btn btn-primary absolute bottom-4 left-4">
+            <button type="button" onClick={() => onPreview(project)} className="btn btn-primary live-preview-btn">
               ▶ Live Preview
             </button>
           )}
         </div>
 
-        <div className="flex flex-1 flex-col gap-4 p-6">
-          <h3 className="font-display text-xl font-bold">{title}</h3>
-          <p className="text-slate-400">{description}</p>
-          <ul aria-label="Technologies" className="flex flex-wrap gap-2">
+        <div className="project-content">
+          <h3 className="project-title">{title}</h3>
+          <p className="project-description">{description}</p>
+          <ul aria-label="Technologies" className="tech-list">
             {technologies.map((tech) => (
-              <li key={tech} className="rounded-full border border-[#5f9bff]/25 bg-[#2f6bff]/10 px-3 py-1 text-xs text-[#9cc2ff]">
+              <li key={tech} className="tech-item">
                 {tech}
               </li>
             ))}
           </ul>
-          <div className="mt-auto flex flex-wrap gap-3 pt-2">
+          <div className="project-actions">
             {liveUrl && (
               <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
                 Open Live Demo <span className="arrow" aria-hidden="true">↗</span>
