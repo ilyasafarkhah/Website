@@ -1,20 +1,14 @@
+import vocabpic from "/src/Components/assets/vocab.png"
+
 export const projects = [
   {
     id: 1,
-    title: "PROJECT NAME",
-    description: "A short description of the project goes here. Replace this text with the actual project description.",
+    title: "Todo List",
+    description: "A responsive Todo List application for managing tasks...",
     technologies: ["React", "JavaScript", "CSS"],
-    image: "/placeholder-project.svg",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
+    image: "vocabpic",
+    liveUrl: "https://vocabulary-k9fb.vercel.app/",
+    githubUrl: "https://github.com/ilyasafarkhah/Vocabulary",
   },
-  {
-    id: 2,
-    title: "PROJECT NAME",
-    description: "A short description of the project goes here. Replace this text with the actual project description.",
-    technologies: ["React", "JavaScript", "CSS"],
-    image: "/placeholder-project.svg",
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
-  },
+
 ];

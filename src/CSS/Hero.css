@@ -1,10 +1,10 @@
 .hero-section{
     position:relative;
     display:flex;
-    min-height:100vh;
+    /* min-height:80vh; */
     align-items:center;
     justify-content:center;
-    overflow:hidden;
+    /* overflow:hidden; */
     padding:6rem 1.5rem 0
 }
 
@@ -17,7 +17,6 @@
     position:relative;
     z-index:10;
     width:100%;
-    max-width:48rem;
     border-radius:2rem;
     padding:3.5rem 2rem;
     text-align:center
@@ -28,7 +27,6 @@
     font-family:var(--font-display);
     font-size:clamp(10px, 3rem, 45px);
     font-weight:800;
-    letter-spacing:-.025em
 }
 
 .hero-subtitle{
@@ -46,29 +44,109 @@
     font-size:1.125rem;
     color:#94a3b8
 }
-    .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:2.5rem}.text-gradient{background:linear-gradient(100deg,#fff 20%,#7fb2ff 50%,#38d5ff 80%);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:hero-shine 6s linear infinite}.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#7fb2ff;box-shadow:0 0 12px #38d5ff;animation:float 8s ease-in-out infinite}@keyframes hero-shine{to{background-position:200% center}}@keyframes float{50%{transform:translate3d(0,-28px,0);opacity:.35}}@media(min-width:640px){.hero-card{padding-left:3.5rem;padding-right:3.5rem}.hero-title{font-size:4.5rem}.hero-subtitle{font-size:1.5rem}}@media(min-width:1024px){.hero-title{font-size:6rem}}
-#home{
-    padding-top: calc(35vw + 20px);
+    
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:1rem;
+    margin-top:2.5rem
 }
 
-#home img{
+.text-gradient{background:linear-gradient(100deg,#fff 20%,#7fb2ff 50%,#38d5ff 80%);
+    background-size:200% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;animation:hero-shine 6s linear infinite
+}
+
+.particle{
+    position:absolute
+    ;width:4px;
+    height:4px;
+    border-radius:50%;
+    background:#7fb2ff;
+    box-shadow:0 0 12px #38d5ff;
+    animation:float 8s ease-in-out infinite}
+    @keyframes hero-shine{
+        to{background-position:200%center}
+    }
+    
+    @keyframes float{
+        50%{
+            transform:translate3d(0,-28px,0);
+            opacity:.35
+        }
+    
+    }
+    @media(min-width:640px){
+        .hero-card{
+            padding-left:3.5rem;
+            padding-right:3.5rem
+        }
+        .hero-title{
+            font-size:4.5rem
+        }
+        .hero-subtitle{
+            font-size:1.5rem
+        }
+    }@media(min-width:1024px){
+        .hero-title{font-size:6rem}
+    }
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 950px);
+    width: 100%;
+}
+
+.hero-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 3.5rem 2rem;
+    text-align: center;
+}
+
+.hero-image {
     position: absolute;
-    top: calc(1.5vw + 10px);
-    width: 100vw;
     z-index: -1;
-    max-height: 890px;
-    transform:  rotate(-1deg);
+    top: -8vw;
+    left: 50%;
+
+    width: 110%;
+
+    transform: translate(-50%, -50%) rotate(-1deg);
+
+    pointer-events: none;
 }
 
-#home > div{
-    width: 950vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#home {
+    padding-top: calc(0vw);
+    margin: 15vw 0;
 }
 
-@media (min-width : 650px){
-    #home img {
-        top: 2.5vw
+
+.hero-card::after{
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 1px;
+    background-color: rgb(0, 153, 255);
+    top: 0;
+    animation: heroanimation 5s cubic-bezier(0.63, 0.12, 0.35, 0.86) infinite;
+    offset-path: inset(0 round 8vw);
+    offset-distance: 0%;
+    offset-anchor: center;
+}
+
+@keyframes heroanimation {
+    0% {
+        offset-distance: 0%;
+    }
+
+    100%{
+        offset-distance: 100%;
+
     }
 }

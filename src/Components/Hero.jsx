@@ -48,53 +48,43 @@ export default function Hero() {
           />
         ))}
       </div>
-      <img src={heropic2} alt="heropic2"/>
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="glass"
-      >
-        <motion.h1
-          variants={item}
-          className="hero-title"
-        >
-          Safarkhah
-        </motion.h1>
 
-        <motion.h2
-          variants={item}
-          className="hero-subtitle"
-        >
-          Aspiring Frontend Developer
-        </motion.h2>
-
-        <motion.p
-          variants={item}
-          className="hero-description"
-        >
-          Frontend developer building interactive web experiences with React and modern technologies.
-        </motion.p>
+      <div className="hero-content">
+        <img
+          src={heropic2}
+          alt=""
+          className="hero-image"
+        />
 
         <motion.div
-          variants={item}
-          className="hero-actions"
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="glass hero-card"
         >
-          <a href="#projects" className="btn btn-primary">
-            View Projects{" "}
-            <span className="arrow" aria-hidden="true">
-              →
-            </span>
-          </a>
+          <motion.h1 variants={item} className="hero-title">
+            Safarkhah
+          </motion.h1>
 
-          <a
-            href="mailto:YOUR_EMAIL"
-            className="btn btn-ghost"
-          >
-            Contact Me
-          </a>
+          <motion.h2 variants={item} className="hero-subtitle">
+            Aspiring Frontend Developer
+          </motion.h2>
+
+          <motion.p variants={item} className="hero-description">
+            Frontend developer building interactive web experiences with React and modern technologies.
+          </motion.p>
+
+          <motion.div variants={item} className="hero-actions">
+            <a href="#projects" className="btn btn-primary">
+              View Projects <span className="arrow">→</span>
+            </a>
+
+            <a href="mailto:YOUR_EMAIL" className="btn btn-ghost">
+              Contact Me
+            </a>
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

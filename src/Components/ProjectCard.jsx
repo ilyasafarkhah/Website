@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import "../CSS/ProjectCard.css";
+import vocabpic from "/src/Components/assets/vocab.png"
 
 export default function ProjectCard({ project, index, onPreview }) {
   const {
@@ -25,7 +26,7 @@ export default function ProjectCard({ project, index, onPreview }) {
       <article className="glass project-card">
         <div className="project-image-wrap">
           <img
-            src={image}
+            src={vocabpic}
             alt={`${title} preview`}
             loading="lazy"
             className="card-img"
