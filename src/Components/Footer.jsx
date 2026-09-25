@@ -3,26 +3,18 @@ import "../CSS/Footer.css";
 const socials = [
   {
     label: "GitHub",
-    href: "https://github.com/YOUR_GITHUB",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/YOUR_LINKEDIN",
-  },
-  {
-    label: "Twitter",
-    href: "https://twitter.com/YOUR_TWITTER",
+    href: "https://github.com/ilyasafarkhah",
   },
   {
     label: "Email",
-    href: "mailto:YOUR_EMAIL",
+    href: "mailto:ilyasafarkhah@gmail.com",
   },
 ];
 
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <h3 className="footer-title">YOUR NAME</h3>
+      <h3 className="footer-title">Ilya Safarkhah</h3>
 
       <p className="footer-description">
         Building digital experiences.
@@ -48,7 +40,7 @@ export default function Footer() {
       </ul>
 
       <p className="footer-copyright">
-        © 2026 YOUR NAME. All rights reserved.
+        © {new Date().getFullYear()} Safarkhah.
       </p>
     </footer>
   );

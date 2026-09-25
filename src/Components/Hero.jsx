@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import "/src/Components/Hero.css"
+import "/src/CSS/Hero.css"
 import heropic2 from "./assets/heropic2.jpg"
 
 const particles = Array.from({ length: 14 }, (_, i) => ({
@@ -53,27 +53,27 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="glass relative z-10 rounded-[2rem] px-8 py-14 text-center"
+        className="glass"
       >
         <motion.h1
           variants={item}
-          className="text-gradient hero-title"
+          className="hero-title"
         >
-          YOUR NAME
+          Safarkhah
         </motion.h1>
 
         <motion.h2
           variants={item}
           className="hero-subtitle"
         >
-          Creative Developer
+          Aspiring Frontend Developer
         </motion.h2>
 
         <motion.p
           variants={item}
           className="hero-description"
         >
-          I build modern, interactive and high-performance digital experiences.
+          Frontend developer building interactive web experiences with React and modern technologies.
         </motion.p>
 
         <motion.div

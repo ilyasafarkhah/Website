@@ -50,7 +50,7 @@ export default function Header() {
       >
         <div className="site-nav-row">
           <a href="#home" className="site-brand">
-            YOUR NAME
+            Safarkhah
           </a>
 
           <ul className="desktop-nav">
