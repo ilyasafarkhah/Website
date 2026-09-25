@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import "../CSS/PreviewModal.css";
 
 export default function PreviewModal({ project, onClose }) {
   const [loaded, setLoaded] = useState(false);
@@ -24,7 +25,7 @@ export default function PreviewModal({ project, onClose }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-3 backdrop-blur-sm sm:p-8"
+      className="preview-overlay"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -34,16 +35,16 @@ export default function PreviewModal({ project, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-label={`${project.title} live preview`}
-        className="glass flex h-full max-h-[85vh] w-full max-w-5xl flex-col overflow-hidden rounded-3xl"
+        className="glass preview-dialog"
         initial={{ scale: 0.94, y: 30, opacity: 0 }}
         animate={{ scale: 1, y: 0, opacity: 1 }}
         exit={{ scale: 0.96, y: 20, opacity: 0 }}
         transition={{ duration: 0.35, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-3">
-          <p className="truncate text-sm text-slate-300">{project.title}</p>
-          <div className="flex shrink-0 gap-2">
+        <div className="preview-header">
+          <p className="preview-title">{project.title}</p>
+          <div className="preview-header-actions">
             <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-sm">
               Open Live Project <span className="arrow" aria-hidden="true">↗</span>
             </a>
@@ -53,14 +54,14 @@ export default function PreviewModal({ project, onClose }) {
           </div>
         </div>
 
-        <div className="relative flex-1 bg-black/40">
+        <div className="preview-body">
           {!loaded && (
-            <div role="status" className="absolute inset-0 grid place-items-center p-6 text-center text-slate-400">
+            <div role="status" className="preview-loading">
               <div>
-                <div className="spinner mx-auto mb-4" />
+                <div className="spinner" />
                 <p>{slow ? "This is taking a while — the site may block embedding." : "Loading preview…"}</p>
                 {slow && (
-                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-5">
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary preview-loading-action">
                     Open Live Project <span className="arrow" aria-hidden="true">↗</span>
                   </a>
                 )}
@@ -72,7 +73,7 @@ export default function PreviewModal({ project, onClose }) {
             src={project.liveUrl}
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
             onLoad={() => setLoaded(true)}
-            className={`h-full w-full transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+            className={`preview-iframe ${loaded ? "is-loaded" : ""}`}
           />
         </div>
       </motion.div>
