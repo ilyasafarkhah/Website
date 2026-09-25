@@ -2,22 +2,43 @@ import { motion } from "motion/react";
 import "../CSS/ProjectCard.css";
 
 export default function ProjectCard({ project, index, onPreview }) {
-  const { title, description, technologies, image, liveUrl, githubUrl } = project;
+  const {
+    title,
+    description,
+    technologies,
+    image,
+    liveUrl,
+    githubUrl,
+  } = project;
 
   return (
-    // The motion wrapper handles the scroll reveal; the inner article handles CSS hover (keeps transforms from clashing).
     <motion.li
       initial={{ opacity: 0, y: 48 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay: (index % 2) * 0.12, ease: "easeOut" }}
+      transition={{
+        duration: 0.7,
+        delay: (index % 2) * 0.12,
+        ease: "easeOut",
+      }}
     >
       <article className="glass project-card">
         <div className="project-image-wrap">
-          <img src={image} alt={`${title} preview`} loading="lazy" className="card-img" />
+          <img
+            src={image}
+            alt={`${title} preview`}
+            loading="lazy"
+            className="card-img"
+          />
+
           <div className="card-fade" aria-hidden="true" />
+
           {liveUrl && (
-            <button type="button" onClick={() => onPreview(project)} className="btn btn-primary live-preview-btn">
+            <button
+              type="button"
+              onClick={() => onPreview(project)}
+              className="btn btn-primary live-preview-btn"
+            >
               ▶ Live Preview
             </button>
           )}
@@ -25,7 +46,11 @@ export default function ProjectCard({ project, index, onPreview }) {
 
         <div className="project-content">
           <h3 className="project-title">{title}</h3>
-          <p className="project-description">{description}</p>
+
+          <p className="project-description">
+            {description}
+          </p>
+
           <ul aria-label="Technologies" className="tech-list">
             {technologies.map((tech) => (
               <li key={tech} className="tech-item">
@@ -33,15 +58,33 @@ export default function ProjectCard({ project, index, onPreview }) {
               </li>
             ))}
           </ul>
+
           <div className="project-actions">
             {liveUrl && (
-              <a href={liveUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-                Open Live Demo <span className="arrow" aria-hidden="true">↗</span>
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost"
+              >
+                Open Live Demo{" "}
+                <span className="arrow" aria-hidden="true">
+                  ↗
+                </span>
               </a>
             )}
+
             {githubUrl && (
-              <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-                Source Code <span className="arrow" aria-hidden="true">→</span>
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost"
+              >
+                Source Code{" "}
+                <span className="arrow" aria-hidden="true">
+                  →
+                </span>
               </a>
             )}
           </div>
