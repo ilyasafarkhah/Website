@@ -1,10 +1,6 @@
 import { motion } from "motion/react";
-<<<<<<< HEAD
 import "/src/Components/Hero.css"
 import heropic2 from "./assets/heropic2.jpg"
-=======
-import "../CSS/Hero.css";
->>>>>>> e79677d5f9e25a3b9f272deb7fa99e498a76aed1
 
 const particles = Array.from({ length: 14 }, (_, i) => ({
   left: `${(i * 37 + 8) % 100}%`,
@@ -57,11 +53,7 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-<<<<<<< HEAD
         className="glass relative z-10 rounded-[2rem] px-8 py-14 text-center"
-=======
-        className="glass hero-card"
->>>>>>> e79677d5f9e25a3b9f272deb7fa99e498a76aed1
       >
         <motion.h1
           variants={item}
