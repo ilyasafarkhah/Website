@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { skills } from "../Data/skills.js";
+import { skills } from "../Data/Skills.js";
 import SectionHeading from "./SectionHeading.jsx";
 
 export default function Skills() {
