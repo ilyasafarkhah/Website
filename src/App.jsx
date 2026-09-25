@@ -1,9 +1,9 @@
 import { motion, MotionConfig } from "motion/react";
-import Header from "./components/Header.jsx";
-import Hero from "./components/Hero.jsx";
+import Header from "./Components/Header.jsx";
+import Hero from "./Components/Hero.jsx";
 import Projects from "./Components/Projects.jsx";
-import Skills from "./components/Skills.jsx";
-import Footer from "./components/Footer.jsx";
+import Skills from "./Components/Skills.jsx";
+import Footer from "./Components/Footer.jsx";
 
 export default function App() {
   return (
