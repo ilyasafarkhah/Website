@@ -44,19 +44,8 @@ button {
   outline-offset: 3px;
 }
 
-<<<<<<< HEAD
-/* Animated background */
-.bg-scene { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: radial-gradient(ellipse at 50% -10%, #0d1b3d 0%, #05070d 60%); }
-.blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .32; will-change: transform; }
-.blob-a { width: 38rem; height: 38rem; background: #000000; top: -10rem; left: -8rem; animation: drift 22s ease-in-out infinite alternate; }
-.blob-b { width: 30rem; height: 30rem; background: #000000; bottom: -8rem; right: -6rem; animation: drift 28s ease-in-out infinite alternate-reverse; }
-.grid-overlay { position: absolute; inset: 0; background-size: 56px 56px; background-image: linear-gradient(rgba(120,160,255,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(120,160,255,.06) 1px, transparent 1px); -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); }
-.particle { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #7fb2ff; box-shadow: 0 0 12px #38d5ff; animation: float 8s ease-in-out infinite; }
-@keyframes drift { to { transform: translate3d(6rem, 4rem, 0) scale(1.15); } }
-@keyframes float { 50% { transform: translate3d(0, -28px, 0); opacity: .35; } }
-@keyframes shine { to { background-position: 200% center; } }
-@keyframes spin { to { transform: rotate(360deg); } }
-=======
+/* Glass effect */
+
 .glass {
   background-image: linear-gradient(
     135deg,
@@ -68,7 +57,6 @@ button {
   border: 1px solid rgba(120, 160, 255, 0.16);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
->>>>>>> e79677d5f9e25a3b9f272deb7fa99e498a76aed1
 
 .glass.is-scrolled {
   background-color: rgba(5, 7, 13, 0.72);
@@ -76,6 +64,8 @@ button {
     0 0 40px rgba(47, 107, 255, 0.25),
     0 8px 32px rgba(0, 0, 0, 0.5);
 }
+
+/* Buttons */
 
 .btn {
   display: inline-flex;
