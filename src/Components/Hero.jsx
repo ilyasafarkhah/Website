@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import "../CSS/Hero.css";
 
 const particles = Array.from({ length: 14 }, (_, i) => ({
   left: `${(i * 37 + 8) % 100}%`,
@@ -12,8 +13,8 @@ const item = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transiti
 
 export default function Hero() {
   return (
-    <section id="home" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-24">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+    <section id="home" className="hero-section">
+      <div aria-hidden="true" className="hero-particles">
         {particles.map((p, i) => (
           <span key={i} className="particle" style={{ left: p.left, top: p.top, animationDelay: p.delay, animationDuration: p.duration }} />
         ))}
@@ -23,18 +24,18 @@ export default function Hero() {
         variants={container}
         initial="hidden"
         animate="show"
-        className="glass relative z-10 max-w-3xl rounded-[2rem] px-8 py-14 text-center sm:px-14"
+        className="glass hero-card"
       >
-        <motion.h1 variants={item} className="text-gradient font-display text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl">
+        <motion.h1 variants={item} className="text-gradient hero-title">
           YOUR NAME
         </motion.h1>
-        <motion.h2 variants={item} className="mt-4 font-display text-xl font-semibold text-slate-200 sm:text-2xl">
+        <motion.h2 variants={item} className="hero-subtitle">
           Creative Developer
         </motion.h2>
-        <motion.p variants={item} className="mx-auto mt-5 max-w-xl text-lg text-slate-400">
+        <motion.p variants={item} className="hero-description">
           I build modern, interactive and high-performance digital experiences.
         </motion.p>
-        <motion.div variants={item} className="mt-10 flex flex-wrap justify-center gap-4">
+        <motion.div variants={item} className="hero-actions">
           <a href="#projects" className="btn btn-primary">
             View Projects <span className="arrow" aria-hidden="true">→</span>
           </a>
