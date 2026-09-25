@@ -12,14 +12,29 @@ export default function Projects() {
 
   return (
     <section id="projects" className="projects-section">
-      <SectionHeading title="Projects" subtitle="Things I've built — open any of them as a live preview right here." />
+      <SectionHeading
+        title="Projects"
+        subtitle="Things I've built — open any of them as a live preview right here."
+      />
+
       <ul className="projects-grid">
         {projects.map((project, i) => (
-          <ProjectCard key={project.id} project={project} index={i} onPreview={setPreview} />
+          <ProjectCard
+            key={project.id}
+            project={project}
+            index={i}
+            onPreview={setPreview}
+          />
         ))}
       </ul>
+
       <AnimatePresence>
-        {preview && <PreviewModal project={preview} onClose={closePreview} />}
+        {preview && (
+          <PreviewModal
+            project={preview}
+            onClose={closePreview}
+          />
+        )}
       </AnimatePresence>
     </section>
   );
