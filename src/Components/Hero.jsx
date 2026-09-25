@@ -1,4 +1,6 @@
 import { motion } from "motion/react";
+import "/src/Components/Hero.css"
+import heropic2 from "./assets/heropic2.jpg"
 
 const particles = Array.from({ length: 14 }, (_, i) => ({
   left: `${(i * 37 + 8) % 100}%`,
@@ -18,12 +20,12 @@ export default function Hero() {
           <span key={i} className="particle" style={{ left: p.left, top: p.top, animationDelay: p.delay, animationDuration: p.duration }} />
         ))}
       </div>
-
+      <img src={heropic2} alt="heropic2"/>
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="glass relative z-10 max-w-3xl rounded-[2rem] px-8 py-14 text-center sm:px-14"
+        className="glass relative z-10 rounded-[2rem] px-8 py-14 text-center"
       >
         <motion.h1 variants={item} className="text-gradient font-display text-5xl font-extrabold tracking-tight sm:text-7xl lg:text-8xl">
           YOUR NAME
