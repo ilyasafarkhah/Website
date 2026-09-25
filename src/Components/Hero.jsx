@@ -8,15 +8,43 @@ const particles = Array.from({ length: 14 }, (_, i) => ({
   duration: `${6 + (i % 5)}s`,
 }));
 
-const container = { hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.25 } } };
-const item = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } } };
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.25,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: "easeOut",
+    },
+  },
+};
 
 export default function Hero() {
   return (
     <section id="home" className="hero-section">
       <div aria-hidden="true" className="hero-particles">
         {particles.map((p, i) => (
-          <span key={i} className="particle" style={{ left: p.left, top: p.top, animationDelay: p.delay, animationDuration: p.duration }} />
+          <span
+            key={i}
+            className="particle"
+            style={{
+              left: p.left,
+              top: p.top,
+              animationDelay: p.delay,
+              animationDuration: p.duration,
+            }}
+          />
         ))}
       </div>
 
@@ -26,20 +54,44 @@ export default function Hero() {
         animate="show"
         className="glass hero-card"
       >
-        <motion.h1 variants={item} className="text-gradient hero-title">
+        <motion.h1
+          variants={item}
+          className="text-gradient hero-title"
+        >
           YOUR NAME
         </motion.h1>
-        <motion.h2 variants={item} className="hero-subtitle">
+
+        <motion.h2
+          variants={item}
+          className="hero-subtitle"
+        >
           Creative Developer
         </motion.h2>
-        <motion.p variants={item} className="hero-description">
+
+        <motion.p
+          variants={item}
+          className="hero-description"
+        >
           I build modern, interactive and high-performance digital experiences.
         </motion.p>
-        <motion.div variants={item} className="hero-actions">
+
+        <motion.div
+          variants={item}
+          className="hero-actions"
+        >
           <a href="#projects" className="btn btn-primary">
-            View Projects <span className="arrow" aria-hidden="true">→</span>
+            View Projects{" "}
+            <span className="arrow" aria-hidden="true">
+              →
+            </span>
           </a>
-          <a href="mailto:YOUR_EMAIL" className="btn btn-ghost">Contact Me</a>
+
+          <a
+            href="mailto:YOUR_EMAIL"
+            className="btn btn-ghost"
+          >
+            Contact Me
+          </a>
         </motion.div>
       </motion.div>
     </section>
