@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import "../CSS/SectionHeading.css";
 
 export default function SectionHeading({ title, subtitle }) {
   return (
@@ -7,10 +8,12 @@ export default function SectionHeading({ title, subtitle }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="mb-14 text-center"
+      className="section-heading"
     >
-      <h2 className="font-display text-4xl font-bold tracking-tight sm:text-5xl">{title}</h2>
-      {subtitle && <p className="mx-auto mt-4 max-w-xl text-slate-400">{subtitle}</p>}
+      <h2 className="section-title">{title}</h2>
+      {subtitle && (
+        <p className="section-subtitle">{subtitle}</p>
+      )}
     </motion.div>
   );
 }

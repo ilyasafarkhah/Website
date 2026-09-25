@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import "../CSS/Header.css";
 
 const links = [
   { id: "home", label: "Home" },
@@ -21,13 +22,18 @@ export default function Header() {
 
   useEffect(() => {
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      (entries) =>
+        entries.forEach(
+          (e) => e.isIntersecting && setActive(e.target.id)
+        ),
       { rootMargin: "-45% 0px -50% 0px" }
     );
+
     links.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (el) io.observe(el);
     });
+
     return () => io.disconnect();
   }, []);
 
@@ -36,27 +42,31 @@ export default function Header() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: "easeOut" }}
-      className="fixed inset-x-0 top-0 z-50 px-4 pt-4"
+      className="site-header"
     >
       <nav
         aria-label="Primary"
-        className={`glass relative mx-auto max-w-5xl rounded-3xl px-5 py-3 transition-all duration-300 ${scrolled ? "is-scrolled" : ""}`}
+        className={`glass site-nav ${scrolled ? "is-scrolled" : ""}`}
       >
-        <div className="flex items-center justify-between">
-          <a href="#home" className="font-display text-sm font-bold tracking-[0.2em]">YOUR NAME</a>
+        <div className="site-nav-row">
+          <a href="#home" className="site-brand">
+            YOUR NAME
+          </a>
 
-          <ul className="hidden items-center gap-1 md:flex">
+          <ul className="desktop-nav">
             {links.map(({ id, label }) => (
               <li key={id}>
                 <a
                   href={`#${id}`}
-                  aria-current={active === id ? "page" : undefined}
-                  className="relative block rounded-full px-4 py-2 text-sm text-slate-300 transition-colors hover:text-white"
+                  aria-current={
+                    active === id ? "page" : undefined
+                  }
+                  className="nav-link"
                 >
                   {active === id && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 -z-10 rounded-full bg-[#2f6bff]/25 ring-1 ring-[#5f9bff]/50"
+                      className="nav-pill"
                     />
                   )}
                   {label}
@@ -71,7 +81,7 @@ export default function Header() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label="Toggle menu"
-            className="grid h-10 w-10 place-items-center rounded-full text-xl md:hidden"
+            className="mobile-menu-button"
           >
             {open ? "✕" : "☰"}
           </button>
@@ -84,11 +94,15 @@ export default function Header() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden md:hidden"
+              className="mobile-menu"
             >
               {links.map(({ id, label }) => (
                 <li key={id}>
-                  <a href={`#${id}`} onClick={() => setOpen(false)} className="block rounded-xl px-3 py-3 text-slate-200 hover:bg-white/5">
+                  <a
+                    href={`#${id}`}
+                    onClick={() => setOpen(false)}
+                    className="mobile-nav-link"
+                  >
                     {label}
                   </a>
                 </li>
